@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import os from "os";
 import "dotenv/config";
 import corsOptions from "./config/corsOption.js";
+import { error } from "console";
 
 const app = express();
 
@@ -37,6 +38,12 @@ await connectToMongoDB();
 
 
 app.use("/", routes);
+app.get('/',(req,res)=>{
+  res.send({
+    activeStatus:true,
+    error:false,
+  })
+})
 
 app.get("/ping", (req, res) => {
   res.json({ message: "Server is alive!" });
