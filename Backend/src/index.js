@@ -1,5 +1,4 @@
-import { startServer } from "./server.js";
-import {connectToMongoDB} from'./server.js';
+import { startServer, connectToMongoDB } from "./server.js";
 
+await connectToMongoDB();
 startServer();
-connectToMongoDB();

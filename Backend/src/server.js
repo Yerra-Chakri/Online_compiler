@@ -3,10 +3,8 @@ import mongoose from "mongoose";
 import routes from "./routes/routes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import os from "os";
 import "dotenv/config";
 import corsOptions from "./config/corsOption.js";
-import { error } from "console";
 
 const app = express();
 
@@ -15,10 +13,10 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-
 mongoose.set("strictQuery", false);
 
-const connectToMongoDB = async () => {
+// ✅ Exported connectToMongoDB function
+export const connectToMongoDB = async () => {
   const baseMongoURI = process.env.MONGO_URI;
   const mongoURI = `${baseMongoURI}/${process.env.DB_NAME}`;
   const options = {
@@ -26,6 +24,7 @@ const connectToMongoDB = async () => {
     useUnifiedTopology: true,
     maxPoolSize: 10,
   };
+
   try {
     await mongoose.connect(mongoURI, options);
     console.log("✅ MongoDB connected:", mongoURI);
@@ -34,19 +33,20 @@ const connectToMongoDB = async () => {
   }
 };
 
-await connectToMongoDB();
+// ✅ Exported startServer function
+export const startServer = () => {
+  const PORT = process.env.PORT || 5000;
 
+  app.use("/", routes);
+  app.get("/", (req, res) => {
+    res.send({ activeStatus: true, error: false });
+  });
 
-app.use("/", routes);
-app.get('/',(req,res)=>{
-  res.send({
-    activeStatus:true,
-    error:false,
-  })
-})
+  app.get("/ping", (req, res) => {
+    res.json({ message: "Server is alive!" });
+  });
 
-app.get("/ping", (req, res) => {
-  res.json({ message: "Server is alive!" });
-});
-
-export default app;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+};
