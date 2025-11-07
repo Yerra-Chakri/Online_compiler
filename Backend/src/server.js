@@ -15,38 +15,32 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 mongoose.set("strictQuery", false);
 
-// ✅ Exported connectToMongoDB function
-export const connectToMongoDB = async () => {
-  const baseMongoURI = process.env.MONGO_URI;
-  const mongoURI = `${baseMongoURI}/${process.env.DB_NAME}`;
-  const options = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    maxPoolSize: 10,
-  };
-
+// ✅ Connect to MongoDB (safe for Vercel)
+const connectToMongoDB = async () => {
   try {
-    await mongoose.connect(mongoURI, options);
-    console.log("✅ MongoDB connected:", mongoURI);
+    const mongoURI = `${process.env.MONGO_URI}/${process.env.DB_NAME}`;
+    await mongoose.connect(mongoURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      maxPoolSize: 10,
+    });
+    console.log("✅ MongoDB connected");
   } catch (error) {
     console.error("❌ MongoDB connection error:", error.message);
   }
 };
 
-// ✅ Exported startServer function
-export const startServer = () => {
-  const PORT = process.env.PORT || 8080;
+await connectToMongoDB();
 
-  app.use("/", routes);
-  app.get("/", (req, res) => {
-    res.send({ activeStatus: true, error: false });
-  });
+app.use("/", routes);
 
-  app.get("/ping", (req, res) => {
-    res.json({ message: "Server is alive!" });
-  });
+app.get("/", (req, res) => {
+  res.send({ activeStatus: true, error: false });
+});
 
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-  });
-};
+app.get("/ping", (req, res) => {
+  res.json({ message: "Server is alive!" });
+});
+
+// ✅ Critical for Vercel
+export default app;

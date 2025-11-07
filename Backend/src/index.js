@@ -1,4 +1,5 @@
-import { startServer, connectToMongoDB } from "./server.js";
+import app from "./server.js";
 
-await connectToMongoDB();
-startServer();
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => console.log(`🚀 Server running locally on port ${PORT}`));
