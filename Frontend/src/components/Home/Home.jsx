@@ -1,5 +1,6 @@
 import React from 'react'
-import  aboutImg from '../images/about.png';
+import { Link } from 'react-router-dom';
+
 const Home = () => {
     return (
         <div>
@@ -17,7 +18,7 @@ const Home = () => {
                                     </h1>
                                     
                                     <div class="my-3">
-                                        <a href="/Login" class="btn btn-light px-4 py-2 rounded-pill border-0">Reach Now</a>
+                                        <Link href="/Login" class="btn btn-light px-4 py-2 rounded-pill border-0">Reach Now</Link>
                                     </div>
                                 </div>
                                
@@ -46,7 +47,7 @@ const Home = () => {
 
                        
                         <div>
-                            <a href="/sign-up" class="btn btn-outline-primary  px-4 py-2 border-0 rounded-pill">Reach Us</a>
+                            <Link href="/sign-up" class="btn btn-outline-primary  px-4 py-2 border-0 rounded-pill">Reach Us</Link>
                         </div>
                     </div>
                 </div>
@@ -68,7 +69,7 @@ const Home = () => {
                         </h2>
                        
                         <div>
-                            <a href="/sign-up" class="btn btn-light px-4 py-2 border-0 rounded-pill">Reach Us</a>
+                            <Link href="/sign-up" class="btn btn-light px-4 py-2 border-0 rounded-pill">Reach Us</Link>
                         </div>
                     </div>
                 </div>

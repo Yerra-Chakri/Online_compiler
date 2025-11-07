@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Graphs = () => {
   return (
@@ -13,7 +14,7 @@ const Graphs = () => {
                     </h2>
                    
                     <div>
-                        <a href="/sign-up" class="btn btn-light px-4 py-2 border-0 rounded-pill">Sing Up Now</a>
+                        <Link href="/sign-up" class="btn btn-light px-4 py-2 border-0 rounded-pill">Sing Up Now</Link>
                     </div>
                 </div>
             </div>
@@ -31,7 +32,7 @@ const Graphs = () => {
                     We are Integral Analytics Solutions, and we have a passion for transforming how businesses use information and data to achieve success.&nbsp;With a focus on excellence and a love to invent, we help businesses succeed in the age of data-driven innovation.
                 </p>
                 <div>
-                    <a href="/login" class="btn btn-outline-primary px-5  py-2 rounded-pill ">Rech Us</a>
+                    <Link href="/login" class="btn btn-outline-primary px-5  py-2 rounded-pill ">Reach Us</Link>
                 </div>
             </div>
            

@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 import { _post } from '../services';
 import { useDispatch } from 'react-redux';
 
@@ -69,33 +69,53 @@ const Login = () => {
                         <div className='submit_btn'>
                             <button className='btn btn-outline-light rounded-pill px-5 py-2 mt-3' >Login</button>
                         </div>
-                        <p className='text-light mt-3'>Don't  have account?  <a href='/sign-up' className='text-light'> Click here</a> to Signup</p>
+                        <p className='text-light mt-3'>Don't  have account?  <Link href='/sign-up' className='text-light'> Click here</Link> to Signup</p>
                         <p className='text-light mt-3'>
                             Visit Our  pages
                         </p>
                         <div className='d-flex justify-content-start'>
                             <div>
-                                <a href=''>
+                                <a 
+                                    href='https://www.facebook.com'
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <i class="fa fs-4 text-white fa-facebook" aria-hidden="true"></i>
                                 </a>
                             </div>
                             <div className='px-2'>
-                                <a href=''>
+                                <a 
+                                    href='https://www.instagram.com'
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <i class="fa fs-4 text-white fa-instagram" aria-hidden="true"></i>
                                 </a>
                             </div>
                             <div className='px-2'>
-                                <a href=''>
+                                <a 
+                                    href='https://www.twitter.com'
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <i class="fa fs-4 text-white fa-twitter" aria-hidden="true"></i>
                                 </a>
                             </div>
                             <div className='px-2'>
-                                <a href=''>
+                                <a 
+                                    href='https://www.linkedin.com'
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <i class="fa fs-4 text-white fa-linkedin" aria-hidden="true"></i>
                                 </a>
                             </div>
                             <div className='px-2'>
-                                <a href=''>
+                                <a 
+                                    href='https://www.youtube.com'
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <i class="fa fs-4 text-white fa-youtube" aria-hidden="true"></i>
                                 </a>
                             </div>
